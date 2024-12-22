@@ -70,3 +70,47 @@ function dragEnded(event, d) {
     d.fx = null;
     d.fy = null;
 }
+
+function updateGraph() {
+    const link = svg.selectAll("line")
+        .data(links)
+        .join("line")
+        .attr("stroke-width", 2)
+        .attr("stroke", "#999");
+
+    const node = svg.selectAll("circle")
+        .data(nodes)
+        .join("circle")
+        .attr("r", 10)
+        .attr("fill", d => d.group === 1 ? "blue" : "green")
+        .call(d3.drag()
+            .on("start", dragStarted)
+            .on("drag", dragged)
+            .on("end", dragEnded));
+
+    // Add text bubbles
+    const text = svg.selectAll("text")
+        .data(nodes)
+        .join("text")
+        .attr("x", d => d.x + 15) // Position text slightly to the right of the node
+        .attr("y", d => d.y)      // Align vertically with the node
+        .attr("dy", ".35em")      // Center text vertically
+        .text(d => d.description)
+        .style("font-size", "12px")
+        .style("visibility", "hidden") // Initially hidden
+        .attr("fill", "black");
+
+    // Show/hide text on hover
+    node.on("mouseover", function (event, d) {
+        d3.select(this).attr("r", 12); // Slightly enlarge the node
+        text.filter(t => t.id === d.id).style("visibility", "visible");
+    }).on("mouseout", function (event, d) {
+        d3.select(this).attr("r", 10); // Restore original size
+        text.filter(t => t.id === d.id).style("visibility", "hidden");
+    });
+
+    // Update simulation
+    simulation.nodes(nodes);
+    simulation.force("link").links(links);
+    simulation.alpha(1).restart();
+}
