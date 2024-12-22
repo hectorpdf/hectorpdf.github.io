@@ -7,9 +7,9 @@ const svg = d3.select("#whiteboard")
     .attr("height", height);
 
 const nodes = [
-    { id: "Result 1", group: 1 },
-    { id: "Result 2", group: 2 },
-    { id: "Result 3", group: 1 }
+    { id: "Result 1", group: 1, description: "This is the description for Result 1" },
+    { id: "Result 2", group: 2, description: "This is the description for Result 2" },
+    { id: "Result 3", group: 1, description: "This is the description for Result 3" }
 ];
 
 const links = [
