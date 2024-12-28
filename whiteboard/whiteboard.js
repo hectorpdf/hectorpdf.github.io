@@ -7,14 +7,56 @@ const svg = d3.select("#whiteboard")
     .attr("height", height);
 
 const nodes = [
-    { id: "Result 1", group: 1, description: "This is the description for Result 1" },
-    { id: "Result 2", group: 2, description: "This is the description for Result 2" },
-    { id: "Result 3", group: 1, description: "This is the description for Result 3" }
+    { id: "H1", group: 1, description: "Narain component in 6D" },
+    { id: "H2", group: 1, description: "CHL string in 6D" },
+    { id: "H3", group: 1, description: "Z3 triple in 6D" },
+    { id: "H4", group: 1, description: "Z4 triple in 6D" },
+    { id: "H5", group: 1, description: "Z5 triple in 6D" },
+    { id: "H6", group: 1, description: "Z6 triple in 6D" },
+    { id: "H7", group: 1, description: "Z7 orbifold in 6D" },
+    { id: "H8", group: 1, description: "Z8 triple in 6D" },
+    { id: "H2D", group: 1, description: "Z2 OD in 6D" },
+    { id: "H6D", group: 1, description: "Z6 OD in 6D" },
+    { id: "H10D", group: 1, description: "Z10 OD in 6D" },
+    { id: "II2", group: 1, description: "AOA = AOB in 6D" },
+    { id: "II3", group: 1, description: "Z3 type II orbifold in 6D" },
+    { id: "II4", group: 1, description: "Z4 type II orbifold in 6D" },
+    { id: "II6", group: 1, description: "Z6 type II orbifold in 6D" },
+    { id: "II5", group: 1, description: "Z5 type II orbifold in 6D" },
+    { id: "II8", group: 1, description: "Z8 type II orbifold in 6D" },
+    { id: "II10", group: 1, description: "Z10 type II orbifold in 6D" },
+    { id: "II12", group: 1, description: "Z12 type II orbifold in 6D" },
+    { id: "II2T", group: 1, description: "AOA with DT in 6D" },
+    { id: "II3T", group: 1, description: "Z3 type II orbifold with DT in 6D" },
+    { id: "II4T", group: 1, description: "Z4 type II orbifold with DT in 6D" },
+    { id: "II5T", group: 1, description: "Z5 type II orbifold with DT in 6D" },
+    { id: "II8T", group: 1, description: "Z8 type II orbifold with DT in 6D" }
 ];
 
 const links = [
-    { source: "Result 1", target: "Result 2" },
-    { source: "Result 2", target: "Result 3" }
+    { source: "H1", target: "H2" },
+    { source: "H1", target: "H3" },
+    { source: "H1", target: "H4" },
+    { source: "H1", target: "H5" },
+    { source: "H1", target: "H6" },
+    { source: "H1", target: "H7" },
+    { source: "H1", target: "H8" },
+    { source: "H1", target: "H2D" },
+    { source: "H1", target: "H6D" },
+    { source: "H1", target: "H10D" },
+    { source: "H1", target: "II2" },
+    { source: "H1", target: "II3" },
+    { source: "H1", target: "II4" },
+    { source: "H1", target: "II6" },
+    { source: "H1", target: "II5" },
+    { source: "H1", target: "II8" },
+    { source: "H1", target: "II10" },
+    { source: "H1", target: "II12" },
+    { source: "H1", target: "II2T" },
+    { source: "H1", target: "II3T" },
+    { source: "H1", target: "II4T" },
+    { source: "H1", target: "II5T" },
+    { source: "H1", target: "II8T" }
 ];
 
 const simulation = d3.forceSimulation(nodes)
