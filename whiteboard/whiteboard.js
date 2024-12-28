@@ -60,9 +60,11 @@ const links = [
 ];
 
 const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id(d => d.id))
-    .force("charge", d3.forceManyBody())
-    .force("center", d3.forceCenter(width / 2, height / 2));
+    .force("link", d3.forceLink(links).id(d => d.id).distance(200))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collision", d3.forceCollide().radius(30)) // Add collision radius;
+    .force("link", d3.forceLink(links).id(d => d.id).distance(link => link.importance * 100));
 
 const link = svg.append("g")
     .selectAll("line")
@@ -81,6 +83,8 @@ const node = svg.append("g")
         .on("start", dragStarted)
         .on("drag", dragged)
         .on("end", dragEnded));
+
+
 
 node.append("title").text(d => d.id);
 
